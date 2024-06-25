@@ -25,3 +25,42 @@ mysql> show databases;
 | sys                |
 +--------------------+
 5 rows in set (0.00 sec)
+
+
+mysql> use payroll_service;
+Database changed
+mysql> Create table Payroll_Service(
+    -> id INT AUTO_INCREMENT,
+    -> name VARCHAR(150) NOT NULL,
+    -> salary Double NOT NULL,
+    -> start DATE NOT NULL,
+    -> PRIMARY KEY (id)
+    -> );
+Query OK, 0 rows affected (0.05 sec)
+
+
+
+
+UC-3 create employee payroll data in the payroll service database
+
+
+mysql> INSERT INTO Payroll_Service (name, salary, start) VALUES
+    ->     ('Amruta', 45000, '2024-02-05'),
+    ->     ('Naveen', 50000, '2023-05-26'),
+    ->     ('Kajal', 35000, '2020-10-09'),
+    ->     ('Namrata', 25000, '2022-05-10');
+Query OK, 4 rows affected (0.05 sec)
+Records: 4  Duplicates: 0  Warnings: 0
+
+mysql> Describe Payroll_Service;
++--------+--------------+------+-----+---------+----------------+
+| Field  | Type         | Null | Key | Default | Extra          |
++--------+--------------+------+-----+---------+----------------+
+| id     | int          | NO   | PRI | NULL    | auto_increment |
+| name   | varchar(150) | NO   |     | NULL    |                |
+| salary | double       | NO   |     | NULL    |                |
+| start  | date         | NO   |     | NULL    |                |
++--------+--------------+------+-----+---------+----------------+
+4 rows in set (0.00 sec)
+
+mysql>
