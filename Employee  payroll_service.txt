@@ -64,3 +64,34 @@ mysql> Describe Payroll_Service;
 4 rows in set (0.00 sec)
 
 mysql>
+--------------------------------------------------------------------------------------
+
+UC-4 Retrieve All The Employee Payroll Data;
+
+
+mysql> SHOW DATABASES;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| mysql              |
+| payroll_service    |
+| performance_schema |
+| sys                |
++--------------------+
+5 rows in set (0.00 sec)
+
+mysql>  USE Payroll_Service;
+Database changed
+mysql>  SELECT * FROM Payroll_Service;
++----+---------+--------+------------+
+| id | name    | salary | start      |
++----+---------+--------+------------+
+|  1 | Amruta  |  45000 | 2024-02-05 |
+|  2 | Naveen  |  50000 | 2023-05-26 |
+|  3 | Kajal   |  35000 | 2020-10-09 |
+|  4 | Namrata |  25000 | 2022-05-10 |
++----+---------+--------+------------+
+4 rows in set (0.00 sec)
+
+mysql>
