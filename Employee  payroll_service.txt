@@ -110,3 +110,74 @@ mysql> Select salary FROM Payroll_Service WHERE start BETWEEN CAST('2023-10-09' 
 |  45000 |
 +--------+
 1 row in set (0.00 sec)
+
+-----------------------------------------------------------------------------------------------------------------------
+UC7 - Ability to find sum, average, min, max and number of male and female employees
+
+mysql> SELECT SUM(salary) FROM Payroll_Service WHERE gender = 'F' GROUP BY gender;
++-------------+
+| SUM(salary) |
++-------------+
+|      105000 |
++-------------+
+1 row in set (0.06 sec)
+
+mysql>  SELECT AVG(salary) FROM Payroll_Service WHERE gender = 'F' GROUP BY gender;
++-------------+
+| AVG(salary) |
++-------------+
+|       35000 |
++-------------+
+1 row in set (0.00 sec)
+
+mysql>  SELECT MIN(salary) FROM Payroll_Service WHERE gender = 'F' GROUP BY gender;
++-------------+
+| MIN(salary) |
++-------------+
+|       25000 |
++-------------+
+1 row in set (0.04 sec)
+
+mysql>  SELECT COUNT(salary) FROM Payroll_Service WHERE gender = 'F' GROUP BY gender;
++---------------+
+| COUNT(salary) |
++---------------+
+|             3 |
++---------------+
+1 row in set (0.00 sec)
+
+mysql>
+
+mysql> SELECT SUM(salary) FROM Payroll_Service WHERE gender = 'M' GROUP BY gender;
++-------------+
+| SUM(salary) |
++-------------+
+|       50000 |
++-------------+
+1 row in set (0.00 sec)
+
+mysql> SELECT AVG(salary) FROM Payroll_Service WHERE gender = 'M' GROUP BY gender;
++-------------+
+| AVG(salary) |
++-------------+
+|       50000 |
++-------------+
+1 row in set (0.00 sec)
+
+mysql> SELECT MIN(salary) FROM Payroll_Service WHERE gender = 'M' GROUP BY gender;
++-------------+
+| MIN(salary) |
++-------------+
+|       50000 |
++-------------+
+1 row in set (0.00 sec)
+
+mysql> SELECT COUNT(salary) FROM Payroll_Service WHERE gender = 'F' GROUP BY gender;
++---------------+
+| COUNT(salary) |
++---------------+
+|             3 |
++---------------+
+1 row in set (0.00 sec)
+
+mysql>
