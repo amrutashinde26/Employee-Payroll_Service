@@ -180,4 +180,29 @@ mysql> SELECT COUNT(salary) FROM Payroll_Service WHERE gender = 'F' GROUP BY gen
 +---------------+
 1 row in set (0.00 sec)
 
+MySQL>
+------------------------------------------------------------------------------------------------------------------------------
+
+UC-8 - Extend Payroll Data To Add Columns Like Phone , Address , Department. 
+
+mysql> ALTER TABLE payroll_service
+    -> ADD COLUMN phone VARCHAR(150) ,
+    -> ADD COLUMN address VARCHAR(255) DEFAULT 'NOT PROVIDED',
+    -> ADD COLUMN department VARCHAR(15) NOT NULL;
+Query OK, 0 rows affected (0.03 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+
+mysql> SELECT * FROM payroll_service;
++----+---------+--------+--------+------------+-------+--------------+------------+
+| id | name    | gender | salary | start      | phone | address      | department |
++----+---------+--------+--------+------------+-------+--------------+------------+
+|  1 | Amruta  | F      |  45000 | 2024-02-05 | NULL  | NOT PROVIDED |            |
+|  2 | Naveen  | M      |  50000 | 2023-05-26 | NULL  | NOT PROVIDED |            |
+|  3 | Kajal   | F      |  35000 | 2020-10-09 | NULL  | NOT PROVIDED |            |
+|  4 | Namrata | F      |  25000 | 2022-05-10 | NULL  | NOT PROVIDED |            |
++----+---------+--------+--------+------------+-------+--------------+------------+
+4 rows in set (0.00 sec)
+
 mysql>
+
