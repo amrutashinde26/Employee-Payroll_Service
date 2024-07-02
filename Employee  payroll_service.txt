@@ -235,5 +235,105 @@ mysql> SELECT * FROM payroll_service;
 mysql>
 
 -----------------------------------------------------------------------------------------------------------------
+UC11- Update Data into Payroll Service Table 
 
+mysql> UPDATE payroll_service SET department="IT" ,basic_pay = 15000, deduction = 2000,taxable_pay = 1500,income_pay = 1000,net_pay = 5000 WHERE
+ name = "Amruta";
+Query OK, 1 row affected (0.05 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
 
+mysql> UPDATE payroll_service SET department = "CS" , basic_pay = 10000,deduction = 1000,taxable_pay=700,income_pay=600,net_pay = 7000 WHERE name = "Naveen";
+Query OK, 1 row affected (0.05 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> UPDATE payroll_service SET department = "EXTC", basic_pay = 20000,deduction= 1000,taxable_pay = 1200,income_pay=1000,net_pay = 16000 WHER
+E name="Kajal";
+Query OK, 1 row affected (0.05 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> UPDATE payroll_service SET department = "Bank", basic_pay = 17000,deduction = 1100,taxable_pay= 700,income_pay=600,net_pay = 13000 WHERE
+name = "Namrata";
+Query OK, 1 row affected (0.05 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> SELECT * FROM payroll_service;
++----+---------+--------+--------+------------+-------+--------------+------------+-----------+-----------+-------------+------------+---------+
+| id | name    | gender | salary | start      | phone | address      | department | basic_pay | deduction | taxable_pay | income_pay | net_pay |
++----+---------+--------+--------+------------+-------+--------------+------------+-----------+-----------+-------------+------------+---------+
+|  1 | Amruta  | F      |  45000 | 2024-02-05 | NULL  | NOT PROVIDED | IT         |     15000 |      2000 |        1500 |       1000 |    5000 |
+|  2 | Naveen  | M      |  50000 | 2023-05-26 | NULL  | NOT PROVIDED | CS         |     10000 |      1000 |         700 |        600 |    7000 |
+|  3 | Kajal   | F      |  35000 | 2020-10-09 | NULL  | NOT PROVIDED | EXTC       |     20000 |      1000 |        1200 |       1000 |   16000 |
+|  4 | Namrata | F      |  25000 | 2022-05-10 | NULL  | NOT PROVIDED | Bank       |     17000 |      1100 |         700 |        600 |   13000 |
++----+---------+--------+--------+------------+-------+--------------+------------+-----------+-----------+-------------+------------+---------+
+4 rows in set (0.00 sec)
+
+-------------------------------------------------------------------------------------------------------------------
+
+UC-11 -  Create New Table And Establish Connection Within Existing Tables 
+
+mysql> CREATE TABLE dept_payroll(
+    -> dept_id INT NOT NULL PRIMARY KEY);
+Query OK, 0 rows affected (0.10 sec)
+
+mysql> INSERT INTO dept_payroll(dept_id) VALUES (10),(20),(30),(40);
+Query OK, 4 rows affected (0.05 sec)
+Records: 4  Duplicates: 0  Warnings: 0
+
+mysql> ALTER TABLE dept_payroll
+    -> ADD COLUMN dept_name VARCHAR(150);
+Query OK, 0 rows affected (0.03 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> UPDATE dept_payroll SET dept_name ="IT" WHERE dept_id = 10;
+Query OK, 1 row affected (0.05 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> UPDATE dept_payroll SET dept_name ="CS" WHERE dept_id = 20;
+Query OK, 1 row affected (0.05 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> UPDATE dept_payroll SET dept_name ="EXTC" WHERE dept_id = 30;
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> UPDATE dept_payroll SET dept_name ="AI" WHERE dept_id = 40;
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> SELECT * FROM dept_payroll;
++---------+-----------+
+| dept_id | dept_name |
++---------+-----------+
+|      10 | IT        |
+|      20 | CS        |
+|      30 | EXTC      |
+|      40 | AI        |
++---------+-----------+
+4 rows in set (0.00 sec)
+
+mysql> CREATE TABLE emp_dept(
+    -> Emp_id INT,
+    -> Dept_id INT ,
+    -> PRIMARY KEY(Emp_id,Dept_id),
+    -> FOREIGN KEY(Emp_id) REFERENCES payroll_service(id),
+    -> FOREIGN KEY(Dept_id) REFERENCES dept_payroll(dept_id)
+    -> );
+Query OK, 0 rows affected (0.16 sec)
+
+mysql> INSERT INTO emp_dept (Emp_id, Dept_id) VALUES
+    ->    (1,10),
+    ->    (2,20),
+    ->    (3,30),
+    ->    (4,40);
+Query OK, 4 rows affected (0.05 sec) 
+Records: 4  Duplicates: 0  Warnings: 0
+
+mysql> SELECT * FROM emp_dept;
++--------+---------+
+| Emp_id | Dept_id |
++--------+---------+
+|      1 |      10 |
+|      2 |      20 |
+|      3 |      30 |
+|      4 |      40 |
++--------+---------+
