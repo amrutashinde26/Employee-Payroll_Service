@@ -206,4 +206,29 @@ mysql> SELECT * FROM payroll_service;
 +----+---------+--------+--------+------------+-------+--------------+------------+
 4 rows in set (0.00 sec)
 
-mysql>
+MySQL>
+
+UC-9 - Add Columns Like Basic pay , deduction, taxable pay , income pay , net pay into payroll service table 
+
+mysql> ALTER TABLE payroll_service
+    -> ADD COLUMN basic_pay INT NOT NULL,
+    -> ADD COLUMN deduction INT NOT NULL,
+    -> ADD COLUMN taxable_pay INT NOT NULL,
+    -> ADD COLUMN income_pay INT NOT NULL,
+    -> ADD COLUMN net_pay INT NOT NULL;
+Query OK, 0 rows affected (0.05 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+
+mysql> SELECT * FROM payroll_service;
++----+---------+--------+--------+------------+-------+--------------+------------+-----------+-----------+-------------+------------+---------+
+| id | name    | gender | salary | start      | phone | address      | department | basic_pay | deduction | taxable_pay | income_pay | net_pay |
++----+---------+--------+--------+------------+-------+--------------+------------+-----------+-----------+-------------+------------+---------+
+|  1 | Amruta  | F      |  45000 | 2024-02-05 | NULL  | NOT PROVIDED |            |         0 |         0 |           0 |          0 |       0 |
+|  2 | Naveen  | M      |  50000 | 2023-05-26 | NULL  | NOT PROVIDED |            |         0 |         0 |           0 |          0 |       0 |
+|  3 | Kajal   | F      |  35000 | 2020-10-09 | NULL  | NOT PROVIDED |            |         0 |         0 |           0 |          0 |       0 |
+|  4 | Namrata | F      |  25000 | 2022-05-10 | NULL  | NOT PROVIDED |            |         0 |         0 |           0 |          0 |       0 |
++----+---------+--------+--------+------------+-------+--------------+------------+-----------+-----------+-------------+------------+---------+
+4 rows in set (0.00 sec)
+
+
